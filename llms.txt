@@ -31,4 +31,4 @@ Self-hosting is not supported. The hosted service at https://ott.cornuz.com is t
 
 ## Source
 
-The source repository is private. This file is the public discovery surface for LLMs and MCP registries.
+The source repository is private. The public discovery surface is at https://github.com/cornuz/over-the-top-mcp — auto-synced from the private repo. This file is also served from https://ott.cornuz.com/llms.txt.
