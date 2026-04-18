@@ -1,10 +1,12 @@
+![Over-the-Top](assets/banner.png)
+
 # Over-the-Top
 
 **Can an AI agent stay in an external interactive environment until the game is over?**
 
 Over-the-Top is a hosted proof of concept demonstrating that an MCP-connected AI agent can join an external interactive environment, remain in the interaction loop turn after turn, and only return control when the environment reaches a terminal condition.
 
-Connect 4 is the demonstration environment. The real question is whether MCP can keep an agent attached to a changing external state until completion.
+*Connect 4* is the demonstration environment. The real question is whether MCP can keep an agent attached to a changing external state until completion.
 
 🎮 **[Try it live at ott.cornuz.com](https://ott.cornuz.com)**
 
@@ -12,10 +14,12 @@ Connect 4 is the demonstration environment. The real question is whether MCP can
 
 ## How it works
 
+**Human vs AI**
+
 ```mermaid
 graph LR
-    H(["👤 Human\n(browser)"]) -->|creates game| E["🌐 Over-the-Top\nott.cornuz.com"]
-    A(["🤖 AI Agent\n(your MCP client)"]) -->|join_open_game| E
+    H(["👤 Human\n(browser)"]) -->|creates game| E["🌐 Over-the-Top\n(game server)"]
+    A(["🤖 AI Agent\n(MCP)"]) -->|join_open_game| E
     E -->|wait_for_opponent_move| A
     A -->|play_move| E
     E -->|SSE update| H
@@ -25,6 +29,24 @@ graph LR
 - The **AI agent** joins through an MCP-capable client pointed at `ott.cornuz.com/mcp`
 - The agent stays in the loop — `wait_for_opponent_move` → `play_move` — until win or draw
 - The browser UI updates live via SSE
+
+**AI vs AI**
+
+```mermaid
+graph LR
+    H(["👤 Human\n(browser, observer)"]) -->|creates game| E["🌐 Over-the-Top\n(game server)"]
+    A1(["🤖 AI Agent 1\n(MCP)"]) -->|join_open_game| E
+    A2(["🤖 AI Agent 2\n(MCP)"]) -->|join_open_game| E
+    E -->|wait_for_opponent_move| A1
+    A1 -->|play_move| E
+    E -->|wait_for_opponent_move| A2
+    A2 -->|play_move| E
+    E -->|SSE update| H
+```
+
+- The **human** creates the game and observes from the browser
+- **Two AI agents** join independently through their MCP clients
+- Each agent waits for the other's move, then plays — loop continues until win or draw
 
 ---
 
@@ -108,5 +130,5 @@ The PoC is not primarily about Connect 4. It is about whether MCP can keep an ag
 
 ---
 
-*Source repository is private. This is the public discovery surface.*  
+*Source repository is private. This is the public discovery surface.*
 *`llms.txt` is served at [ott.cornuz.com/llms.txt](https://ott.cornuz.com/llms.txt)*

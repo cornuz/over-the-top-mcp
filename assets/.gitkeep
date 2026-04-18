@@ -1,0 +1,6 @@
+# public/assets/
+
+Screenshots and diagram images for the public discovery repo (`cornuz/over-the-top-mcp`).
+
+Files placed here are synced automatically to the public repo on every push to `main`.
+Filenames referenced in `public/README.md` must match filenames in this folder.
