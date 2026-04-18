@@ -1,4 +1,4 @@
-![Over-the-Top](assets/ott-github-opengraph.png)
+[![Over-the-Top](assets/ott-github-opengraph.png)](https://ott.cornuz.com)
 
 # Over-the-Top
 
@@ -17,20 +17,30 @@ Over-the-Top is a hosted proof of concept demonstrating that an MCP-connected AI
 **Human vs AI**
 
 ```mermaid
-graph LR
-    classDef human fill:#1a6faa,stroke:#0d4e7d,color:#fff,rx:20
-    classDef agent fill:#b45309,stroke:#7c3a04,color:#fff,rx:20
-    classDef server fill:#1e6b3e,stroke:#0f4023,color:#fff
+flowchart LR
+    H(["💪 <b>Human<br></b>(Browser | P1)"]) L_H_E_0@== creates game ==> E["🎪 OTT<br>Game server"]
+    A(["🦾 <b>AI Agent<br></b>(MCP | P2)"]) L_A_E_0@== join_open_game ==> E
+    E L_E_A_0@== wait_for_opponent_move ==> A
+    A L_A_E_2@== play_move ==> E
+    E L_E_H_0@== SSE update ==> H
+    H L_H_E_2@== play move ==> E
 
-    H(["👤 Human\n(browser)"]):::human
-    A(["🤖 AI Agent\n(MCP)"]):::agent
-    E["🌐 Over-the-Top\n(game server)"]:::server
+     H:::playerone
+     E:::server
+     A:::playertwo
+    classDef playerone fill:#DA1D00,stroke:#fff,color:#fff,rx:20
+    classDef playertwo fill:#F6D300,stroke:#fff,color:#000,rx:20
+    classDef server fill:#818cf8,stroke:#94a3b8,color:#fff
+    style H stroke:#000000,stroke-width:0px,stroke-dasharray:0
+    style E font-size:21px,line-height:24px,stroke-width:0px,stroke-dasharray:0,stroke:#000000
+    style A stroke-width:0px,stroke-dasharray:0
 
-    H -->|creates game| E
-    A -->|join_open_game| E
-    E -->|wait_for_opponent_move| A
-    A -->|play_move| E
-    E -->|SSE update| H
+    L_H_E_0@{ curve: natural }
+    L_A_E_0@{ curve: natural }
+    L_E_A_0@{ curve: natural, animation: slow }
+    L_A_E_2@{ curve: natural, animation: slow }
+    L_E_H_0@{ curve: natural, animation: slow }
+    L_H_E_2@{ curve: natural, animation: slow }
 ```
 
 - The **human** creates a game in the browser at `ott.cornuz.com`
@@ -41,24 +51,37 @@ graph LR
 **AI vs AI**
 
 ```mermaid
-graph TB
-    classDef human fill:#1a6faa,stroke:#0d4e7d,color:#fff,rx:20
-    classDef agent fill:#b45309,stroke:#7c3a04,color:#fff,rx:20
-    classDef server fill:#1e6b3e,stroke:#0f4023,color:#fff
+flowchart TB
+    H(["💪 <b>Human</b><br>(Browser | Observer)"]) L_H_E_0@== creates game ==> E["🎪 <b>OTT</b><br>Game server"]
+    E L_E_H_0@== SSE update ==> H
+    A1(["🦾 <b>AI Agent X</b> (MCP | P1)"]) L_A1_E_0@== join_open_game ==> E
+    E L_E_A1_0@== wait_for_opponent_move ==> A1 & A2(["🦾 <b>AI Agent Y</b> (MCP | P2)"])
+    A1 L_A1_E_2@== play_move ==> E
+    A2 L_A2_E_0@== join_open_game ==> E
+    A2 L_A2_E_2@== play_move ==> E
 
-    H(["👤 Human\n(browser | observer)"]):::human
-    E["🌐 Over-the-Top\n(game server)"]:::server
-    A1(["🤖 AI Agent 1\n(MCP | Player 1)"]):::agent
-    A2(["🤖 AI Agent 2\n(MCP | Player 2)"]):::agent
+    E@{ shape: rect}
+     H:::observer
+     E:::server
+     A1:::playerone
+     A2:::playertwo
+    classDef playerone fill:#DA1D00,stroke:#fff,color:#fff,rx:20
+    classDef playertwo fill:#F6D300,stroke:#000,color:#000,rx:20
+    classDef server fill:#818cf8,stroke:#94a3b8,color:#fff
+    classDef observer fill:#94a3b8,stroke:#94a3b8,color:#000,rx:20
+    style H fill:#BBDEFB,stroke:#000000,stroke-width:0px,stroke-dasharray:0
+    style E font-size:21px,line-height:24px,stroke-width:0px,stroke-dasharray:0,stroke:#000000
+    style A1 stroke-width:0px,stroke-dasharray:0,stroke:#000000
+    style A2 stroke-width:0px,stroke-dasharray:0
 
-    H -->|creates game| E
-    E -->|SSE update| H
-    A1 -->|join_open_game| E
-    E -->|wait_for_opponent_move| A1
-    A1 -->|play_move| E
-    A2 -->|join_open_game| E
-    E -->|wait_for_opponent_move| A2
-    A2 -->|play_move| E
+    L_H_E_0@{ curve: natural, animation: none }
+    L_E_H_0@{ curve: natural, animation: slow }
+    L_A1_E_0@{ curve: natural, animation: none }
+    L_E_A1_0@{ curve: natural, animation: slow }
+    L_E_A2_0@{ curve: natural, animation: slow }
+    L_A1_E_2@{ curve: natural, animation: slow }
+    L_A2_E_0@{ curve: natural }
+    L_A2_E_2@{ curve: natural, animation: slow }
 ```
 
 - The **human** creates the game and observes from the browser
@@ -144,6 +167,18 @@ Self-hosting is not supported. The hosted service at `https://ott.cornuz.com` is
 - Browser-side durable state plus server-side ephemeral compute is a viable architecture for this kind of PoC.
 
 The PoC is not primarily about Connect 4. It is about whether MCP can keep an agent attached to a changing external environment until completion.
+
+---
+
+## Contributing
+
+Issues and suggestions are welcome! Please open an issue to discuss any proposed changes before submitting a pull request.
+
+## Support
+
+Enjoying this project?
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-cornuz-orange?logo=buy-me-a-coffee)](https://buymeacoffee.com/cornuz)
 
 ---
 
