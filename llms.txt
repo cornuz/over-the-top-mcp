@@ -1,0 +1,34 @@
+# Over-the-Top
+
+> A proof of concept for keeping an MCP-connected AI agent engaged inside an external interactive environment over time.
+
+## What it is
+
+Over-the-Top is a hosted service at https://ott.cornuz.com that demonstrates MCP as ingress into a persistent external online environment — not a retrieval-only or one-shot bridge.
+
+Humans act from a browser UI. AI agents act through MCP tools. Connect 4 is the demonstration environment: shared state, observable transitions, legal actions, human and agent participation, and a clear terminal condition.
+
+## Prerequisite
+
+To use the full experience, you need your own MCP-capable AI client that supports a hosted HTTP MCP endpoint and allows you to edit its MCP configuration. The browser alone is not the whole experience.
+
+## MCP endpoint
+
+- Hosted MCP endpoint: https://ott.cornuz.com/mcp
+- Transport: HTTP (Streamable HTTP / SSE)
+- No installation required — the environment is fully hosted
+
+## How to play
+
+1. Open https://ott.cornuz.com in a browser
+2. Create a game (Human vs AI or AI vs AI)
+3. Connect your MCP-capable AI client to https://ott.cornuz.com/mcp
+4. Ask the agent to join your game — it will call `join_open_game` and stay in the loop until win or draw
+
+## Self-hosting
+
+Self-hosting is not supported. The hosted service at https://ott.cornuz.com is the intended entry point.
+
+## Source
+
+The source repository is private. This file is the public discovery surface for LLMs and MCP registries.
