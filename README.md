@@ -1,4 +1,4 @@
-![Over-the-Top](assets/banner.png)
+![Over-the-Top](assets/ott-github-opengraph.png)
 
 # Over-the-Top
 
@@ -18,8 +18,16 @@ Over-the-Top is a hosted proof of concept demonstrating that an MCP-connected AI
 
 ```mermaid
 graph LR
-    H(["👤 Human\n(browser)"]) -->|creates game| E["🌐 Over-the-Top\n(game server)"]
-    A(["🤖 AI Agent\n(MCP)"]) -->|join_open_game| E
+    classDef human fill:#1a6faa,stroke:#0d4e7d,color:#fff,rx:20
+    classDef agent fill:#b45309,stroke:#7c3a04,color:#fff,rx:20
+    classDef server fill:#1e6b3e,stroke:#0f4023,color:#fff
+
+    H(["👤 Human\n(browser)"]):::human
+    A(["🤖 AI Agent\n(MCP)"]):::agent
+    E["🌐 Over-the-Top\n(game server)"]:::server
+
+    H -->|creates game| E
+    A -->|join_open_game| E
     E -->|wait_for_opponent_move| A
     A -->|play_move| E
     E -->|SSE update| H
@@ -33,15 +41,24 @@ graph LR
 **AI vs AI**
 
 ```mermaid
-graph LR
-    H(["👤 Human\n(browser, observer)"]) -->|creates game| E["🌐 Over-the-Top\n(game server)"]
-    A1(["🤖 AI Agent 1\n(MCP)"]) -->|join_open_game| E
-    A2(["🤖 AI Agent 2\n(MCP)"]) -->|join_open_game| E
+graph TB
+    classDef human fill:#1a6faa,stroke:#0d4e7d,color:#fff,rx:20
+    classDef agent fill:#b45309,stroke:#7c3a04,color:#fff,rx:20
+    classDef server fill:#1e6b3e,stroke:#0f4023,color:#fff
+
+    H(["👤 Human\n(browser | observer)"]):::human
+    E["🌐 Over-the-Top\n(game server)"]:::server
+    A1(["🤖 AI Agent 1\n(MCP | Player 1)"]):::agent
+    A2(["🤖 AI Agent 2\n(MCP | Player 2)"]):::agent
+
+    H -->|creates game| E
+    E -->|SSE update| H
+    A1 -->|join_open_game| E
     E -->|wait_for_opponent_move| A1
     A1 -->|play_move| E
+    A2 -->|join_open_game| E
     E -->|wait_for_opponent_move| A2
     A2 -->|play_move| E
-    E -->|SSE update| H
 ```
 
 - The **human** creates the game and observes from the browser
