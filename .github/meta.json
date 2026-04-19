@@ -1,0 +1,1 @@
+{"description": "Play Connect 4 against an AI agent that stays in the loop via MCP — proof of persistent agent execution", "homepage": "https://ott.cornuz.com", "topics": ["mcp", "mcp-server", "model-context-protocol", "connect-four", "ai-agent", "persistent-agent", "game", "sse", "proof-of-concept", "llms-txt"], "has_issues": true}
