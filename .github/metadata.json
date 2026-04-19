@@ -1,0 +1,1 @@
+{"description": "Human vs AI Connect 4 over MCP — the agent persists across turns until game over, no polling, no restart","topics": ["mcp", "mcp-server", "model-context-protocol", "ai-agent", "ai", "llm", "turn-based", "connect-four", "game", "streamable-http", "sse", "agentic-ai", "human-in-the-loop", "stateful"]}
