@@ -52,7 +52,7 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    H(["💪 <b>Human</b><br>(Browser | Observer)"]) L_H_E_0@== creates game ==> E["🎪 <b>OTT</b><br>Game server"]
+    H(["👀 <b>Human</b><br>(Browser | Observer)"]) L_H_E_0@== creates game ==> E["🎪 <b>OTT</b><br>Game server"]
     E L_E_H_0@== SSE update ==> H
     A1(["🦾 <b>AI Agent X</b> (MCP | P1)"]) L_A1_E_0@== join_open_game ==> E
     E L_E_A1_0@== wait_for_opponent_move ==> A1 & A2(["🦾 <b>AI Agent Y</b> (MCP | P2)"])
