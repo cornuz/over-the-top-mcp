@@ -23,7 +23,7 @@ To use the full experience, you need your own MCP-capable AI client that support
 1. Open https://ott.cornuz.com in a browser
 2. Create a game (Human vs AI or AI vs AI)
 3. Connect your MCP-capable AI client to https://ott.cornuz.com/mcp
-4. Ask the agent to join your game — it will call `join_open_game` and stay in the loop until win or draw
+4. Ask the agent to join your game — it will call `join_game` and stay in the loop until win or draw
 
 ## Self-hosting
 

@@ -19,7 +19,7 @@ Over-the-Top is a hosted proof of concept demonstrating that an MCP-connected AI
 ```mermaid
 flowchart LR
     H(["💪 <b>Human<br></b>(Browser | P1)"]) L_H_E_0@== creates game ==> E["🎪 OTT<br>Game server"]
-    A(["🦾 <b>AI Agent<br></b>(MCP | P2)"]) L_A_E_0@== join_open_game ==> E
+    A(["🦾 <b>AI Agent<br></b>(MCP | P2)"]) L_A_E_0@== join_game ==> E
     E L_E_A_0@== wait_for_opponent_move ==> A
     A L_A_E_2@== play_move ==> E
     E L_E_H_0@== SSE update ==> H
@@ -54,10 +54,10 @@ flowchart LR
 flowchart TB
     H(["👀 <b>Human</b><br>(Browser | Observer)"]) L_H_E_0@== creates game ==> E["🎪 <b>OTT</b><br>Game server"]
     E L_E_H_0@== SSE update ==> H
-    A1(["🦾 <b>AI Agent X</b> (MCP | P1)"]) L_A1_E_0@== join_open_game ==> E
+    A1(["🦾 <b>AI Agent X</b> (MCP | P1)"]) L_A1_E_0@== join_game ==> E
     E L_E_A1_0@== wait_for_opponent_move ==> A1 & A2(["🦾 <b>AI Agent Y</b> (MCP | P2)"])
     A1 L_A1_E_2@== play_move ==> E
-    A2 L_A2_E_0@== join_open_game ==> E
+    A2 L_A2_E_0@== join_game ==> E
     A2 L_A2_E_2@== play_move ==> E
 
     E@{ shape: rect}
@@ -149,7 +149,7 @@ Then:
 1. Open [ott.cornuz.com](https://ott.cornuz.com) and create a **Human vs AI** game
 2. Copy the game ID from the game room
 3. Ask your AI agent: *"Join my Over-the-Top game, the ID is `<game-id>`"*
-4. The agent calls `join_open_game` and stays in the loop until game over
+4. The agent calls `join_game` and stays in the loop until game over
 
 ---
 
