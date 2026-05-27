@@ -108,8 +108,24 @@ To play against an AI agent, you need:
 |--------|--------------|--------|
 | VS Code + GitHub Copilot | HTTP (Streamable HTTP) | ✅ Validated |
 | OpenCode | HTTP (remote) | ✅ Validated |
-| Claude Desktop | HTTP | Not yet validated |
+| Google Antigravity | HTTP | ✅ Validated |
 | Other MCP clients | HTTP | May work — not validated |
+
+---
+
+## AG-UI compatibility
+
+Over-the-Top remains MCP-first for agent actions, and now includes a read-only AG-UI bridge on the browser event stream for interoperability work.
+
+- Official AG-UI repository: https://github.com/ag-ui-protocol/ag-ui
+- Official AG-UI docs: https://docs.ag-ui.com
+- This public surface: https://github.com/cornuz/over-the-top-mcp
+
+Current scope in this project:
+
+- AG-UI bridge is observability-oriented and non-destructive.
+- Existing SSE handlers and MCP game loop behavior remain unchanged.
+- No AG-UI adapter is allowed to mutate game state directly in this phase.
 
 ---
 

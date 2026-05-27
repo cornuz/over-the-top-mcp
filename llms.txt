@@ -32,3 +32,9 @@ Self-hosting is not supported. The hosted service at https://ott.cornuz.com is t
 ## Source
 
 The source repository is private. The public discovery surface is at https://github.com/cornuz/over-the-top-mcp — auto-synced from the private repo. This file is also served from https://ott.cornuz.com/llms.txt.
+
+## AG-UI linkage
+
+- Official AG-UI project: https://github.com/ag-ui-protocol/ag-ui
+- Official AG-UI docs: https://docs.ag-ui.com
+- Over-the-Top status: MCP-first gameplay with an incremental read-only AG-UI event bridge for interoperability and observability.
